@@ -28,7 +28,6 @@ class StringCalculator
                 array_push($arrayErrores,'Number expected but NOT found ');
 
             }
-            //print($separadasPorBarraN[1]);
             $separadasPorSeparador = explode($separador,$separadasPorBarraN[1]);
             foreach($separadasPorSeparador as $elem){
                 for($i=0;$i<strlen($elem);$i++){
@@ -49,9 +48,6 @@ class StringCalculator
                 }
             }
 
-
-
-            //print($separador);
 
 
             foreach ($separadasTotal as $elem){
