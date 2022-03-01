@@ -12,7 +12,7 @@ class StringCalculator
         }
         else
         {
-            $posicionerror = 1;
+            $posicionerror = 2;
             $total = 0.0;
             $separador = "\n";
             $separadasPorBarraN = explode($separador,$number);
@@ -20,15 +20,15 @@ class StringCalculator
             $separadasTotal = [];
             $numerosNegativos = [];
             $arrayErrores = [];
+            $errores = "";
 
+            if($number[strlen($number)-1] == $separador){
+                array_push($arrayErrores,'Number expected but NOT found');
+                $number[strlen($number)-1] ='z';
+            }
 
             $separador = substr($separadasPorBarraN[0],2);
 
-            if($number[strlen($number)-1] == $separador){
-                array_push($arrayErrores,'Number expected but NOT found ');
-
-            }
-            //print($separadasPorBarraN[1]);
             $separadasPorSeparador = explode($separador,$separadasPorBarraN[1]);
             foreach($separadasPorSeparador as $elem){
                 for($i=0;$i<strlen($elem);$i++){
@@ -49,11 +49,6 @@ class StringCalculator
                 }
             }
 
-
-
-            //print($separador);
-
-
             foreach ($separadasTotal as $elem){
                 $numeroAComprobarSiNegativo = (double)$elem;
                 if($numeroAComprobarSiNegativo<0){
@@ -64,21 +59,31 @@ class StringCalculator
                 }
 
             }
-            if (empty($errores) and empty($numerosNegativos)){
+            if (empty($arrayErrores) and empty($numerosNegativos)){
                 return (String)$total;
-            }
-            else{
-                if(!empty($numerosNegativos))
-                {
+            } else{
+                if(!empty($numerosNegativos)) {
                     $devolverNumerosNegativos = "Negative not allowed : ";
-                    foreach($numerosNegativos as $elem){
-                        $devolverNumerosNegativos = $devolverNumerosNegativos .$elem .", ";
+                    $devolverNumerosNegativos = $devolverNumerosNegativos.$numerosNegativos[0];
+                    for($i=1;$i<count($numerosNegativos);$i++){
+                        $devolverNumerosNegativos =  $devolverNumerosNegativos . ", " . $numerosNegativos[$i];
                     }
                     $errores = $devolverNumerosNegativos;
-                }
-                if(!empty($arrayErrores)) {
-                    foreach ($arrayErrores as $elem) {
-                        $errores = $errores . "\n" . $elem;
+                    if(!empty($arrayErrores)){
+                        $errores = $errores . "\n";
+                        if (count($arrayErrores) == 1) {
+                            $errores = $errores . $arrayErrores[0];
+                        }
+                        else {
+                            foreach ($arrayErrores as $elem) {
+                                $errores = $errores . "\n" . $elem;
+                            }
+                        }
+                    }
+                } else {
+                    $errores = $arrayErrores[0];
+                    for($i=1;$i<count($arrayErrores);$i++){
+                        $errores =  $errores . "\n" . $arrayErrores[$i];
                     }
                 }
                 return $errores;

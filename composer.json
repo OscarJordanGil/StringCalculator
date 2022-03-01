@@ -12,12 +12,12 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Deg540\\PHPTestingBoilerplate\\": "src/"
+            "OscarJordanGil\\StringCalculator\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Deg540\\PHPTestingBoilerplate\\Test\\": "tests/"
+            "OscarJordanGil\\StringCalculator\\Test\\": "tests/"
         }
     },
     "config": {

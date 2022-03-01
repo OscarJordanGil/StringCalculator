@@ -7,7 +7,7 @@ namespace OscarJordanGil\StringCalculator\Test;
 use OscarJordanGil\StringCalculator\StringCalculator;
 use PHPUnit\Framework\TestCase;
 
-final class StringCalculatorText extends TestCase
+final class StringCalculatorTest extends TestCase
 {
     /**
      * @test
@@ -48,7 +48,7 @@ final class StringCalculatorText extends TestCase
     /**
      * @test
      */
-    public function entre_separadores_no_hay_numero_error()
+    public function entre_separadores_no_hay_numero_error_numero_esperado()
     {
         $StringCalculator = new StringCalculator();
 
@@ -60,7 +60,7 @@ final class StringCalculatorText extends TestCase
     /**
      * @test
      */
-    public function ultimo_valor_es_separador_error()
+    public function ultimo_valor_es_separador_error_numero_esperado()
     {
         $StringCalculator = new StringCalculator();
 
@@ -85,7 +85,7 @@ final class StringCalculatorText extends TestCase
     /**
      * @test
      */
-    public function numero_negativo_error()
+    public function numero_negativo_error_no_permitidos()
     {
         $StringCalculator = new StringCalculator();
 
@@ -93,6 +93,20 @@ final class StringCalculatorText extends TestCase
 
         $this->assertEquals("Negative not allowed : -6", $result);
     }
+
+
+    /**
+     * @test
+     */
+    public function numeros_negativos_error_no_permitidos()
+    {
+        $StringCalculator = new StringCalculator();
+
+        $result = $StringCalculator->calcular("//,\n1,-6,-4");
+
+        $this->assertEquals("Negative not allowed : -6, -4", $result);
+    }
+
 
     /**
      * @test
@@ -103,6 +117,6 @@ final class StringCalculatorText extends TestCase
 
         $result = $StringCalculator->calcular("//,\n1,,2,-8");
 
-        $this->assertEquals("Number expected but NOT found\nNegative not allowed : -8", $result);
+        $this->assertEquals("Negative not allowed : -8\nNumber expected but NOT found", $result);
     }
 }
