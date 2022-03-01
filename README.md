@@ -1,5 +1,7 @@
 StringCalculator
   Partes del programa:
+  
+  
     1. Comprobamos si la entrada es o no nula.
     2. En el caso de que no lo sea lo primero creamos las variables.
       2.1 Separamos nuestra entrada por \n para encontrar nuestro separador.
