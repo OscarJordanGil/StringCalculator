@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Deg540\PHPTestingBoilerplate\Test;
+namespace OscarJordanGil\StringCalculator\Test;
 
-use Deg540\PHPTestingBoilerplate\Calculator;
+use OscarJordanGil\StringCalculator\StringCalculator;
 use PHPUnit\Framework\TestCase;
 
 final class StringCalculatorText extends TestCase
@@ -24,7 +24,7 @@ final class StringCalculatorText extends TestCase
     /**
      * @test
      */
-    public function 1_devuelve_1()
+    public function uno_devuelve_1()
     {
         $StringCalculator = new StringCalculator();
 
@@ -36,7 +36,7 @@ final class StringCalculatorText extends TestCase
     /**
      * @test
      */
-    public function 1y2_devuelve_3()
+    public function uno_y_dos_devuelve_tres()
     {
          $StringCalculator = new StringCalculator();
 
